@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="30dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="30dp"
+    android:weightSum="1"
+    tools:context="com.example.admin.w2d4.MainActivity">
+
+    /////////////////////// SAVE/WRITE FILE
+
+    <EditText
+        android:id="@+id/etAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:hint="Enter new data for File"
+        android:lines="1" />
+
+    <Button
+        android:id="@+id/btnAddData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateData"
+        android:text="Add Data" />
+
+    <EditText
+        android:id="@+id/tvFileContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:hint="File content"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnGetData"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateData"
+        android:text="Get Data" />
+
+    ///////////////////SQLite
+
+    <EditText
+        android:id="@+id/etFirstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:hint="First Name"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/etLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:hint="Last Name"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/etPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:hint="Phone Number"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/etBirthCity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:hint="Birth City"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/etJob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.1"
+        android:gravity="center"
+        android:hint="Job"
+        android:textColor="@color/colorAccent"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btnSQLite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateData"
+        android:text="SQLite Show Data" />
+
+</LinearLayout>
