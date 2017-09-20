@@ -20,6 +20,17 @@ public class MainActivity extends AppCompatActivity {
     EditText etAddData;
     TextView tvFileContent;
 
+    //////////////DATABASE FIELD BINDS
+    EditText etFirstName;
+    EditText etLastName;
+    EditText etPhoneNumber;
+    EditText etBirthCity;
+    EditText etJob;
+
+    MyDatabase db;
+    boolean flag = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,21 +38,28 @@ public class MainActivity extends AppCompatActivity {
 
         etAddData = (EditText) findViewById(R.id.etAddData);
         tvFileContent = (TextView) findViewById(R.id.tvFileContent);
+
+        /////////SQLITE EDITTEXT BIND
+        etFirstName = (EditText) findViewById(R.id.etFirstName);
+        etLastName = (EditText) findViewById(R.id.etLastName);
+        etPhoneNumber = (EditText) findViewById(R.id.etPhoneNumber);
+        etBirthCity = (EditText) findViewById(R.id.etBirthCity);
+        etJob = (EditText) findViewById(R.id.etJob);
     }
 
 
     public void updateData(View view) {
 
-        switch (view.getId()){
+        switch (view.getId()) {
 
             case R.id.btnAddData:
 
-                String data  = etAddData.getText().toString();
+                String data = etAddData.getText().toString();
                 try {
-                    FileOutputStream fileOutputStream = openFileOutput("myText.txt",MODE_PRIVATE);
+                    FileOutputStream fileOutputStream = openFileOutput("myText.txt", MODE_PRIVATE);
                     fileOutputStream.write(data.getBytes());
                     fileOutputStream.close();
-                    Toast.makeText(getApplicationContext(),"Text Saved",Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Text Saved", Toast.LENGTH_LONG).show();
                     etAddData.setText("");
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -52,13 +70,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btnGetData:
 
                 try {
-                    FileInputStream fileInputStream= openFileInput("myText.txt");
+                    FileInputStream fileInputStream = openFileInput("myText.txt");
                     InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream);
                     BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
                     StringBuffer stringBuffer = new StringBuffer();
                     String lines;
-                    while ((lines=bufferedReader.readLine())!=null) {
-                        stringBuffer.append(lines+"\n");
+                    while ((lines = bufferedReader.readLine()) != null) {
+                        stringBuffer.append(lines + "\n");
                     }
                     tvFileContent.setText(stringBuffer.toString());
                 } catch (IOException e) {
@@ -67,9 +85,62 @@ public class MainActivity extends AppCompatActivity {
 
                 break;
 
+            case R.id.btnCreate:
+
+                db = new MyDatabase(MainActivity.this);
+
+                if(etFirstName.getText().toString() != ""
+                        && etLastName.getText().toString() != ""
+                        && etPhoneNumber.getText().toString() != ""
+                        && etBirthCity.getText().toString() != ""
+                        && etJob.getText().toString() != "") {
+
+                    db.create(etFirstName.getText().toString(),
+                            etLastName.getText().toString(),
+                            etPhoneNumber.getText().toString(),
+                            etBirthCity.getText().toString(),
+                            etJob.getText().toString());
+                }else{
+                    Toast.makeText(this, "Fields might be empty", Toast.LENGTH_LONG).show();
+                }
+
+                flag = true;
+
+                break;
+
+            case R.id.btnRead:
+                break;
+
+            case R.id.btnUpdate:
+
+                if(flag &&
+                        etFirstName.getText().toString() != ""
+                        && etLastName.getText().toString() != ""
+                        && etPhoneNumber.getText().toString() != ""
+                        && etBirthCity.getText().toString() != ""
+                        && etJob.getText().toString() != "") {
+
+                    db.insert(etFirstName.getText().toString(),
+                            etLastName.getText().toString(),
+                            etPhoneNumber.getText().toString(),
+                            etBirthCity.getText().toString(),
+                            etJob.getText().toString());
+                }else{
+                    Toast.makeText(this, "Fields might be empty", Toast.LENGTH_LONG).show();
+                }
+
+                break;
+
+            case R.id.btnDelete:
+                break;
+
         }
 
     }
 
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        db.closeDB();
+    }
 }

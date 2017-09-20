@@ -5,11 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="30dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
-    android:paddingTop="30dp"
-    android:weightSum="1"
     tools:context="com.example.admin.w2d4.MainActivity">
 
     /////////////////////// SAVE/WRITE FILE
@@ -55,6 +52,7 @@
         android:layout_weight="0.1"
         android:gravity="center"
         android:hint="First Name"
+        android:text=""
         android:textColor="@color/colorAccent"
         android:textSize="20dp" />
 
@@ -65,6 +63,7 @@
         android:layout_weight="0.1"
         android:gravity="center"
         android:hint="Last Name"
+        android:text=""
         android:textColor="@color/colorAccent"
         android:textSize="20dp" />
 
@@ -75,6 +74,7 @@
         android:layout_weight="0.1"
         android:gravity="center"
         android:hint="Phone Number"
+        android:text=""
         android:textColor="@color/colorAccent"
         android:textSize="20dp" />
 
@@ -85,6 +85,7 @@
         android:layout_weight="0.1"
         android:gravity="center"
         android:hint="Birth City"
+        android:text=""
         android:textColor="@color/colorAccent"
         android:textSize="20dp" />
 
@@ -95,14 +96,43 @@
         android:layout_weight="0.1"
         android:gravity="center"
         android:hint="Job"
+        android:text=""
         android:textColor="@color/colorAccent"
         android:textSize="20dp" />
 
     <Button
-        android:id="@+id/btnSQLite"
+        android:id="@+id/btnCreate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="updateData"
-        android:text="SQLite Show Data" />
+        android:text="Create" />
+
+    <Button
+        android:id="@+id/btnRead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateData"
+        android:text="Read" />
+
+    <Button
+        android:id="@+id/btnUpdate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateData"
+        android:text="Update" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="updateData"
+        android:text="Delete" />
+
+    <Button
+        android:id="@+id/btnAsyncTasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="openAsync"
+        android:text="Async Tasks" />
 
 </LinearLayout>
